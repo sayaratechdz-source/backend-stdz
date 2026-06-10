@@ -24,6 +24,8 @@ module.exports = [
         'http://localhost:5175',   // Vite (port alternatif)
         'http://10.33.111.16:5173',
         'http://10.33.111.16:5174',
+        // Production frontend on Railway
+        'https://sayaratech-dz-production.up.railway.app',
         // OAuth providers
         'https://accounts.google.com',
         'https://www.facebook.com',
