@@ -2,14 +2,20 @@ const path = require("path");
 
 module.exports = ({ env }) => {
   // Railway provides MYSQL_URL automatically when MySQL plugin is added
+  // mysql2 does NOT support connectionString — parse URL manually
   const mysqlUrl = env("MYSQL_URL");
 
   if (mysqlUrl) {
+    const url = new URL(mysqlUrl);
     return {
       connection: {
         client: "mysql2",
         connection: {
-          connectionString: mysqlUrl,
+          host: url.hostname,
+          port: parseInt(url.port) || 3306,
+          database: url.pathname.replace("/", ""),
+          user: url.username,
+          password: url.password,
           ssl: { rejectUnauthorized: false },
         },
         pool: {
