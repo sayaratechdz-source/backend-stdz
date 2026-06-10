@@ -1,12 +1,11 @@
 module.exports = ({ env }) => ({
 
-  // ── Upload Cloudinary ─────────────────────────────────
   upload: {
     config: {
       provider: 'cloudinary',
       providerOptions: {
         cloud_name: env('CLOUDINARY_NAME'),
-        api_key:    env('CLOUDINARY_KEY'),
+        api_key: env('CLOUDINARY_KEY'),
         api_secret: env('CLOUDINARY_SECRET'),
       },
       actionOptions: {
@@ -17,12 +16,11 @@ module.exports = ({ env }) => ({
     },
   },
 
-  // ── Import / Export ───────────────────────────────────
+  // Disable temporarily
   'import-export-entries': {
-    enabled: true,
+    enabled: false,
   },
 
-  // ── Users & Permissions (OAuth Google + Facebook) ─────
   'users-permissions': {
     config: {
       jwt: {
@@ -30,19 +28,17 @@ module.exports = ({ env }) => ({
       },
       providers: {
         google: {
-          enabled:      env.bool('GOOGLE_ENABLED', false),
-          icon:         'google',
-          key:          env('GOOGLE_CLIENT_ID',     ''),
-          secret:       env('GOOGLE_CLIENT_SECRET', ''),
-          callbackURL:  env('GOOGLE_REDIRECT_URI',  'http://localhost:1337/api/connect/google/callback'),
+          enabled: env.bool('GOOGLE_ENABLED', false),
+          key: env('GOOGLE_CLIENT_ID', ''),
+          secret: env('GOOGLE_CLIENT_SECRET', ''),
+          callbackURL: env('GOOGLE_REDIRECT_URI', ''),
           scope: ['email', 'profile'],
         },
         facebook: {
-          enabled:      env.bool('FACEBOOK_ENABLED', false),
-          icon:         'facebook',
-          key:          env('FACEBOOK_APP_ID',     ''),
-          secret:       env('FACEBOOK_APP_SECRET', ''),
-          callbackURL:  env('FACEBOOK_REDIRECT_URI', 'http://localhost:1337/api/connect/facebook/callback'),
+          enabled: env.bool('FACEBOOK_ENABLED', false),
+          key: env('FACEBOOK_APP_ID', ''),
+          secret: env('FACEBOOK_APP_SECRET', ''),
+          callbackURL: env('FACEBOOK_REDIRECT_URI', ''),
           scope: ['email', 'public_profile'],
         },
       },
