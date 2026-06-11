@@ -26,6 +26,7 @@ module.exports = [
         'http://10.33.111.16:5174',
         // Production frontend on Railway
         'https://sayaratech-dz-production.up.railway.app',
+        'https://admin-frontend-production-2907.up.railway.app',
         // OAuth providers
         'https://accounts.google.com',
         'https://www.facebook.com',
